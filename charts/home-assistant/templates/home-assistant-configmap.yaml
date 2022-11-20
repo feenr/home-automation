@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  home-assistant-config: |
+    default_config:
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        - 10.42.0.90
+    tts:
+      - platform: google_translate
+    automation: !include automations.yaml
+    script: !include scripts.yaml
+    scene: !include scenes.yaml
+kind: ConfigMap
+metadata:
+  annotations:
+  name: home-assistant-config
